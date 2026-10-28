@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Your Module — SETU CPD Course</title>
+  <meta name="description" content="A practical, NFQ Level 8 guide to building a clear, accessible and engaging module space in the LMS, for academic staff new to curriculum design. South East Technological University (SETU).">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to course content</a>
+<!-- Inline icon sprite — line icons on a 24px grid (paths adapted from Lucide, ISC licence).
+     Use: <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-NAME"></use></svg>
+     or, from JS, Course.icon("NAME"). Add new symbols here; keep them decorative (text carries meaning). -->
+<svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h6"/></symbol>
+  <symbol id="i-swap" viewBox="0 0 24 24"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></symbol>
+  <symbol id="i-book-open" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8M16 13H8M16 17H8"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-calculator" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M8 6h8"/><path d="M16 14v4M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></symbol>
+  <symbol id="i-blocks" viewBox="0 0 24 24"><rect width="7" height="7" x="14" y="3" rx="1"/><path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"/></symbol>
+  <symbol id="i-list-checks" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+  <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+  <symbol id="i-warning" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+</svg>
+<div class="sr-only" id="a11yStatus" role="status" aria-live="polite" aria-atomic="true"></div>
+<div class="app">
+
+  <!-- ============================ SIDEBAR ============================ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <img class="sidebar__logo" src="assets/MONO_WHITE.png" alt="SETU — South East Technological University">
+      <p class="sidebar__kicker">CPD · Self-paced</p>
+      <h1 class="sidebar__title">Building Your Module</h1>
+      <p class="sidebar__meta"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clock"></use></svg> ~30 minutes · 7 sections</p>
+    </div>
+
+    <div class="progress">
+      <div class="progress__label"><span>Your progress</span><span id="progressPct">0%</span></div>
+      <div class="progress__track"><div class="progress__fill" id="progressFill"></div></div>
+    </div>
+
+    <nav aria-label="Course sections">
+      <ul class="nav" id="nav"><!-- populated by JS --></ul>
+    </nav>
+
+    <div class="sidebar__foot">
+      <button class="sidebar__theme" id="themeBtnSide" type="button">
+        <span class="sidebar__theme-icon" id="themeIcon" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-moon"></use></svg></span> <span id="themeLabel">Toggle dark mode</span>
+      </button>
+      <p style="margin:14px 0 0">South East Technological University · A practical guide for part-time &amp; industry-based lecturers.</p>
+    </div>
+  </aside>
+  <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+
+  <!-- ============================ MAIN ============================ -->
+  <div class="main">
+    <div class="topbar">
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Open course menu" aria-controls="sidebar" aria-expanded="false"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-menu"></use></svg></button>
+      <img class="topbar__logo" src="assets/MONO_WHITE.png" alt="SETU">
+      <span class="topbar__title" id="topTitle">Building Your Module</span>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark mode"><span id="themeIconTop" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-moon"></use></svg></span></button>
+    </div>
+
+    <main class="content-scroll" id="scroll" tabindex="-1"><div id="main"></div>
+
+      <!-- =================================================================
+           COURSE OVERVIEW (Rise-style front door)
+      ================================================================== -->
+      <section class="lesson lesson--overview" data-lesson="overview" data-accent="1">
+        <div class="ov-hero">
+          <span class="ov-hero__crest crest-grad" aria-hidden="true"></span>
+          <div class="ov-hero__panel u-panel grad-mesh">
+            <span class="eyebrow"><span class="u-mark" aria-hidden="true"></span> Lifelong Learning at SETU · CPD</span>
+            <h1 id="ovTitle" tabindex="-1">Building Your Module</h1>
+            <p class="ov-hero__sub" id="ovSubtitle">Without making a mess of the LMS</p>
+            <p class="ov-hero__meta"><span id="ovMeta">~30 minutes · 7 sections</span> · <span id="ovPct">0%</span> complete</p>
+          </div>
+          <div class="ov-hero__side">
+            <p class="tagline" id="ovTagline">LEARN MORE.<br>GO FURTHER.</p>
+            <button class="btn btn--primary btn--lg" id="overviewCta" type="button">Start the course</button>
+          </div>
+        </div>
+        <h2 class="ov-h2" id="lessonsHeading">Lessons</h2>
+        <div class="lcards" id="lessonCards" role="list" aria-labelledby="lessonsHeading"></div>
+        <p class="ov-note">Your progress is saved automatically on this device — return to any lesson at any time.</p>
+      </section>
+
+      <!-- =================================================================
+           SECTION 1 — WELCOME AND LEARNING OUTCOMES  (data-lesson="0")
+      ================================================================== -->
+      <section class="lesson" data-lesson="0" data-accent="1">
+      <header class="hero">
+          <span class="hero__crest crest-grad" aria-hidden="true"></span>
+          <div class="hero__panel u-panel grad-mesh">
+            <span class="eyebrow" data-hero-eyebrow><span class="u-mark" aria-hidden="true"></span> Section 1 of 7</span>
+            <h1 tabindex="-1">Building your module without making a mess of the LMS</h1>
+            <p class="hero__meta">~1.5 min read</p>
+          </div>
+          <!-- Photo theme: Our People. Progress strip rendered by js/rise.js. Optional cover photo: add
+               <img class="hero__bg" src="assets/…" alt=""> as the first child of .hero -->
+          <div class="hero__side" data-hero-side></div>
+        </header>
+
+        <p class="lead">For most of your students, <strong>the LMS is the module</strong>. It's where they find out what's expected, what's due, and whether anyone is there. A well-built module page quietly supports learning. A messy one adds confusion, anxiety and a flood of emails to you.</p>
+
+        <p>In the next thirty minutes, we'll build a module space that's <strong>clear, accessible and engaging</strong>. We'll look at the module page, announcements and content organisation, then forums, live links and communication, then the tools that support peer and lecturer&ndash;student interaction. We'll finish with using Turnitin for assessment.</p>
+
+        <div class="card card--objectives">
+          <h2>By the end of this unit, you'll be able to:</h2>
+          <ul class="obj-list">
+            <li>Plan a clear, accessible and engaging module space</li>
+            <li>Organise a module page, content and announcements so students can navigate with confidence</li>
+            <li>Design forums, live sessions and communication routines that support learning</li>
+            <li>Select LMS tools for peer and lecturer&ndash;student interaction that match your outcomes</li>
+            <li>Set up Turnitin links for formative and summative assessment at Levels 7, 8 and 9</li>
+          </ul>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <div class="callout callout--why">
+          <div class="callout__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-layout"></use></svg></div>
+          <div class="callout__body">
+            <p><strong>Moodle and Blackboard are examples, not requirements.</strong> I'll use both throughout, but the principles apply to any LMS, although the menu names will likely differ.</p>
+          </div>
+        </div>
+
+        <div class="callout callout--why">
+          <div class="callout__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-target"></use></svg></div>
+          <div class="callout__body">
+            <p><strong>Pitched at NFQ Level 8.</strong> This unit is written for academic staff new to curriculum design, with Level 7 and Level 9 contrasts where the advice genuinely differs.</p>
+          </div>
+        </div>
+
+        <p>You're the expert on your discipline, so throughout I'll ask you to draw on your <strong>industry experience</strong>: how professionals communicate, collaborate and judge quality online. Have a notepad ready, or use the reflection boxes.</p>
+
+        <div class="callout callout--tip">
+          <div class="callout__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clock"></use></svg></div>
+          <div class="callout__body">
+            <p><strong>Estimated time: 30 minutes.</strong> You can pause and return to this at any point &mdash; your progress is saved automatically on this device.</p>
+          </div>
+        </div>
+
+        <div class="lesson-nav">
+          <span></span>
+          <button class="btn btn--primary" data-next>Start the course <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></button>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           SECTION 2 — A CLEAR, ACCESSIBLE AND ENGAGING SPACE  (data-lesson="1")
+      ================================================================== -->
+      <section class="lesson" data-lesson="1" data-accent="2">
+      <header class="hero">
+          <span class="hero__crest crest-grad" aria-hidden="true"></span>
+          <div class="hero__panel u-panel grad-mesh">
+            <span class="eyebrow" data-hero-eyebrow><span class="u-mark" aria-hidden="true"></span> Section 2 of 7</span>
+            <h1 tabindex="-1">A clear, accessible and engaging online learning space</h1>
+            <p class="hero__meta">~5.5 min read</p>
+          </div>
+          <div class="hero__side" data-hero-side></div>
+        </header>
+
+        <div class="statement"><span class="u-watermark" aria-hidden="true"></span><span>Start with the student's view.</span></div>
+
+        <p class="lead">Imagine opening your module for the first time on a phone, on a bus, after a long day at work. At Level 8 you're likely teaching many adult learners with jobs and families, so that's a realistic picture.</p>
+
+        <ol class="process" aria-label="Three qualities of a good module space, in order">
+          <li class="process__step"><span class="process__n">1</span><strong>Clear</strong><span>Less to read, click and decode</span></li>
+          <li class="process__step"><span class="process__n">2</span><strong>Accessible</strong><span>Works for every student, by design</span></li>
+          <li class="process__step"><span class="process__n">3</span><strong>Engaging</strong><span>A human voice, and something to think about</span></li>
+        </ol>
+
+        <div class="gate" data-gate></div>
+
+        <h2>Clear first</h2>
+        <p>Sweller's cognitive load theory (1988) reminds us that working memory is limited. Every unnecessary click, duplicate file or ambiguous label uses up attention that should go to learning. Mayer's multimedia principles (2009) say the same about visuals: remove decoration that doesn't help. So, aim for <strong>a consistent layout, predictable names, and one obvious place to start</strong>.</p>
+
+        <div class="callout callout--why">
+          <div class="callout__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-scale"></use></svg></div>
+          <div class="callout__body">
+            <p><strong>The design principle is alignment.</strong> It will be familiar from Biggs and Tang (2011). Your module space should make the learning outcomes, the learning activities and the assessments visible and connected. If students can't see how this week's activity relates to the assessment, the structure is hiding the point.</p>
+          </div>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <h2>Have a go</h2>
+        <p>Here is a deliberately messy module page. Select the problems you can spot. Don't worry if you're finding most of them &mdash; everyone has built a page like this at some point.</p>
+
+        <div class="widget hotspots" data-hotspots="messy">
+          <div class="kc__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-search"></use></svg> Spot the problems &middot; mock-up, no real data</div>
+
+          <div class="lmsmock" role="group" aria-label="Mock-up of a cluttered module page. Select anything you think is a problem.">
+            <div class="lmsmock__bar"><span>PM8001 Project Management</span><span>Semester 1, 2022/23</span></div>
+
+            <button class="hot hot--gap" type="button" data-problem="welcome" data-title="No welcome section."
+              data-explain="Nothing at the top tells a student where to begin, what's expected or how to reach you. A Start Here area goes first, before anything else.">
+              <span class="lmsmock__gap">Top of the page</span>
+            </button>
+
+            <div class="lmsmock__block">
+              <h3 class="lmsmock__h">Course materials</h3>
+              <button class="hot" type="button" data-problem="files" data-title="Thirty files named &ldquo;Lecture_final_v2&rdquo;."
+                data-explain="Near-identical names mean students can't tell which is current. Prefer a web page to a stack of attachments, link to a single file, and use clear names such as &ldquo;Week 3: Activity: Case analysis&rdquo;.">
+                <span class="lmsmock__files">
+                  <span>Lecture_final_v2.pdf</span>
+                  <span>Lecture_final_v2_FINAL.pdf</span>
+                  <span>Lecture_final_v3 (1).pdf</span>
+                  <span>Lecture_FINAL_use this one.pdf</span>
+                  <span class="lmsmock__more">&hellip; and 26 more</span>
+                </span>
+              </button>
+            </div>
+
+            <div class="lmsmock__block lmsmock__row">
+              <p class="lmsmock__p">For the assessment details,
+                <button class="hot hot--inline" type="button" data-problem="link" data-title="A link labelled &ldquo;click here&rdquo;."
+                  data-explain="Link text should say where it goes, such as &ldquo;Assessment brief for Report 1&rdquo;. A screen reader user listing the links on the page hears &ldquo;click here&rdquo; again and again, and learns nothing.">click here</button>.</p>
+              <button class="hot" type="button" data-problem="dates" data-title="Last year's dates."
+                data-explain="Dates from a previous run make students doubt everything else on the page. If you roll a module over, check dates, links and references to old assessments.">
+                <span class="lmsmock__date">Report 1 due: Friday 17 February 2023</span>
+              </button>
+            </div>
+
+            <div class="lmsmock__block lmsmock__row">
+              <button class="hot" type="button" data-problem="video" data-title="An unlabelled video with no captions."
+                data-explain="Students can't tell what it is or how long it runs, and anyone who can't hear it is shut out. Label it, and caption and transcribe all video and audio.">
+                <span class="lmsmock__video" aria-hidden="false"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-video"></use></svg><span>Video</span></span>
+              </button>
+              <button class="hot" type="button" data-problem="assessment" data-title="Five different places for assessment information."
+                data-explain="Assessment information belongs in one place, in Start Here, with the full brief linked from there. Scattered copies drift apart, and every disagreement becomes an email to you.">
+                <span class="lmsmock__chips">
+                  <span>Assessment (Week 1 folder)</span><span>Assignment info</span><span>Grading criteria</span><span>Assessment FAQ</span><span>Assessment news</span>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <p class="hotspots__status" data-found-status role="status"></p>
+          <ul class="hotspots__list" data-found-list></ul>
+          <button class="btn btn--ghost btn--sm" type="button" data-reveal-all>Show me the rest</button>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <h2>Now accessible</h2>
+        <p>This isn't an optional extra. Public bodies in Ireland, including universities, are bound by the <strong>EU Web Accessibility Directive</strong>, which points to the Web Content Accessibility Guidelines, WCAG, as the standard. More importantly, it's good design for everyone. CAST's Universal Design for Learning guidelines (2018) encourage multiple ways of engaging, representing content, and expressing learning.</p>
+        <p>In practice, that's a short list:</p>
+        <ul>
+          <li>Use <strong>real headings</strong>, not bold text, so screen readers can navigate.</li>
+          <li>Write <strong>meaningful link text</strong>, such as &ldquo;Assessment brief for Report 1&rdquo;, rather than &ldquo;click here&rdquo;.</li>
+          <li>Add <strong>alt text</strong> to images that carry meaning.</li>
+          <li><strong>Caption and transcribe</strong> video and audio.</li>
+          <li>Check <strong>colour contrast</strong>.</li>
+          <li>Prefer <strong>web pages or accessible documents</strong> to scanned PDFs.</li>
+        </ul>
+        <div class="callout callout--tip">
+          <div class="callout__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-shield"></use></svg></div>
+          <div class="callout__body">
+            <p><strong>Let a tool do the first pass.</strong> Your editor may have a built-in accessibility checker, and many institutions provide a tool such as Ally. Use it.</p>
+          </div>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <h2>Finally, engaging</h2>
+        <p>Garrison, Anderson and Archer's Community of Inquiry framework (2000) describes three kinds of presence:</p>
+        <div class="deflist">
+          <div class="deflist__row"><div class="deflist__term">Teaching presence</div><div class="deflist__desc">Your design, facilitation and direction.</div></div>
+          <div class="deflist__row"><div class="deflist__term">Social presence</div><div class="deflist__desc">Students feeling they're among people.</div></div>
+          <div class="deflist__row"><div class="deflist__term">Cognitive presence</div><div class="deflist__desc">Real thinking and enquiry.</div></div>
+        </div>
+        <p>A module page that is only a document repository delivers none of these. Engagement comes from <strong>a visible human voice</strong>, such as a short welcome video, from <strong>spaces to interact</strong>, and from <strong>tasks that need students to think and apply</strong>.</p>
+        <p>The National Forum's digital teaching and learning work, including its roadmap for enhancement in a digital world (2015), encourages us to use technology purposefully to support learning rather than for its own sake.</p>
+
+        <div class="statement"><span class="u-watermark" aria-hidden="true"></span><span>The question is never &ldquo;which tools can I add?&rdquo; It's &ldquo;what should students do, and what's the simplest way to support it?&rdquo;</span></div>
+
+        <div class="reflect" data-reflect="s1">
+          <div class="reflect__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pen"></use></svg> Your experience &middot; not scored</div>
+          <p class="reflect__prompt" id="reflect-s1">Think about how a new starter is welcomed into a team in your industry. What do they need to know on day one, and where do they find it? What could you borrow for your module's first screen?</p>
+          <textarea aria-labelledby="reflect-s1" placeholder="Jot your thoughts here &mdash; saved only on this device&hellip;"></textarea>
+          <div class="reflect__foot">
+            <span class="reflect__note">Just for your own thinking.</span>
+            <button class="reflect__save" type="button">Save note</button>
+          </div>
+        </div>
+
+        <div class="lesson-nav">
+          <button class="btn btn--ghost" data-prev><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg> <span class="long">Welcome</span></button>
+          <button class="btn btn--primary" data-next><span class="long">Page, announcements &amp; content</span> <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></button>
+        </div>
+      </section>
+      <!-- =================================================================
+           SECTION 3 — THE MODULE PAGE, ANNOUNCEMENTS AND CONTENT  (data-lesson="2")
+      ================================================================== -->
+      <section class="lesson" data-lesson="2" data-accent="3">
+      <header class="hero">
+          <span class="hero__crest crest-grad" aria-hidden="true"></span>
+          <div class="hero__panel u-panel grad-mesh">
+            <span class="eyebrow" data-hero-eyebrow><span class="u-mark" aria-hidden="true"></span> Section 3 of 7</span>
+            <h1 tabindex="-1">The module page, announcements and content organisation</h1>
+            <p class="hero__meta">~6 min read</p>
+          </div>
+          <div class="hero__side" data-hero-side></div>
+        </header>
+
+        <p class="lead">Let's build the page. Think of it in <strong>three layers</strong>: a Start Here area, a structure for the learning content, and announcements to keep things moving.</p>
+
+        <figure class="figure figure--framed fig-wire">
+          <svg viewBox="0 0 660 340" role="img" aria-label="Wireframe of a module page: a Start Here block at the top with five items, weekly sections beneath it, and a side column with the latest announcement, the Q&amp;A forum and the live session link">
+            <defs>
+              <style>
+                .wf-frame{fill:var(--bg);stroke:var(--line);stroke-width:1.5}
+                .wf-bar{fill:var(--slate)}
+                .wf-here{fill:var(--accent);}
+                .wf-sub{fill:var(--accent-tint);stroke:var(--accent);stroke-width:1}
+                .wf-week{fill:var(--bg-sub);stroke:var(--line);stroke-width:1.2}
+                .wf-side{fill:var(--bg-sub);stroke:var(--line);stroke-width:1.2}
+                .wf-t{fill:var(--ink-strong);font:700 12.5px var(--font-head)}
+                .wf-w{fill:#fff;font:700 13px var(--font-head)}
+                .wf-s{fill:var(--ink-soft);font:11.5px var(--font-body)}
+                .wf-a{fill:var(--accent-ink);font:600 11px var(--font-body)}
+              </style>
+            </defs>
+            <rect class="wf-frame" x="10" y="10" width="640" height="320" rx="10"/>
+            <rect class="wf-bar" x="10" y="10" width="640" height="30" rx="10"/><rect class="wf-bar" x="10" y="28" width="640" height="12"/>
+            <text class="wf-w" x="26" y="31" style="font-size:12px">Module title &middot; code &middot; semester</text>
+
+            <rect class="wf-here" x="26" y="54" width="402" height="104" rx="8"/>
+            <text class="wf-w" x="42" y="76">START HERE</text>
+            <rect class="wf-sub" x="42" y="86" width="116" height="26" rx="5"/><text class="wf-a" x="50" y="103">Welcome (video)</text>
+            <rect class="wf-sub" x="164" y="86" width="116" height="26" rx="5"/><text class="wf-a" x="172" y="103">Learning outcomes</text>
+            <rect class="wf-sub" x="286" y="86" width="126" height="26" rx="5"/><text class="wf-a" x="294" y="103">Assessment schedule</text>
+            <rect class="wf-sub" x="42" y="118" width="150" height="26" rx="5"/><text class="wf-a" x="50" y="135">Contact &amp; response times</text>
+            <rect class="wf-sub" x="198" y="118" width="150" height="26" rx="5"/><text class="wf-a" x="206" y="135">Where to ask questions</text>
+            <rect class="wf-sub" x="354" y="118" width="58" height="26" rx="5"/><text class="wf-a" x="361" y="135">Supports</text>
+
+            <rect class="wf-week" x="26" y="170" width="402" height="62" rx="8"/>
+            <text class="wf-t" x="42" y="190">Week 1</text>
+            <text class="wf-s" x="42" y="210">Overview &middot; What to do &middot; Resources &middot; Activity &middot; What's next</text>
+            <rect class="wf-week" x="26" y="240" width="402" height="34" rx="8"/><text class="wf-t" x="42" y="261">Week 2 &nbsp;<tspan class="wf-s" style="font-weight:400">same pattern</tspan></text>
+            <rect class="wf-week" x="26" y="282" width="402" height="34" rx="8"/><text class="wf-t" x="42" y="303">Week 3 &nbsp;<tspan class="wf-s" style="font-weight:400">same pattern</tspan></text>
+
+            <rect class="wf-side" x="444" y="54" width="190" height="86" rx="8"/>
+            <text class="wf-t" x="458" y="76">Announcements</text>
+            <text class="wf-s" x="458" y="96">Week 4: this week we move</text>
+            <text class="wf-s" x="458" y="112">from describing to evaluating&hellip;</text>
+            <rect class="wf-side" x="444" y="150" width="190" height="42" rx="8"/><text class="wf-t" x="458" y="176">Q&amp;A forum</text>
+            <rect class="wf-side" x="444" y="202" width="190" height="42" rx="8"/><text class="wf-t" x="458" y="228">Live session link</text>
+            <text class="wf-s" x="444" y="270">One place for each kind of thing,</text>
+            <text class="wf-s" x="444" y="286">in the same place every week.</text>
+          </svg>
+          <figcaption>Permanent information at the top, learning in a repeating pattern, and time-sensitive news at the side.</figcaption>
+        </figure>
+
+        <div class="gate" data-gate></div>
+
+        <div class="accordion" data-accordion="module">
+          <div class="acc">
+            <button class="acc__head" type="button" aria-expanded="false" aria-controls="macc-body-1" id="macc-head-1">
+              <span class="acc__n" aria-hidden="true">1</span>
+              <span class="acc__q">Start Here</span>
+              <span class="acc__chev" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-down"></use></svg></span>
+            </button>
+            <div class="acc__body" id="macc-body-1" role="region" aria-labelledby="macc-head-1"><div class="acc__inner">
+              <p>Put this at the top of the page, before anything else:</p>
+              <ul>
+                <li>a short welcome, ideally with a brief video or audio message;</li>
+                <li>the learning outcomes;</li>
+                <li>an at-a-glance assessment schedule with dates and weightings;</li>
+                <li>how and when to contact you;</li>
+                <li>where to ask questions; and</li>
+                <li>links to key supports such as the library, academic writing and disability services.</li>
+              </ul>
+              <p class="acc__tip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-bulb"></use></svg> If students have to hunt for these, they email you instead.</p>
+            </div></div>
+          </div>
+
+          <div class="acc">
+            <button class="acc__head" type="button" aria-expanded="false" aria-controls="macc-body-2" id="macc-head-2">
+              <span class="acc__n" aria-hidden="true">2</span>
+              <span class="acc__q">Structure your content</span>
+              <span class="acc__chev" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-down"></use></svg></span>
+            </button>
+            <div class="acc__body" id="macc-body-2" role="region" aria-labelledby="macc-head-2"><div class="acc__inner">
+              <p>Choose one logical pattern and use it consistently. Common options are a <strong>weekly</strong> structure, a <strong>topic</strong> structure, or an <strong>assessment-led</strong> structure. Weekly works well for fully online modules. Topic structure fits when content doesn't map neatly to weeks.</p>
+              <p>Whatever you choose, repeat the same internal pattern in every section. For example: a short overview, what to do, the resources, an activity, and what's next.</p>
+              <p class="acc__tip"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-bulb"></use></svg> Predictability reduces effort.</p>
+            </div></div>
+          </div>
+
+          <div class="acc">
+            <button class="acc__head" type="button" aria-expanded="false" aria-controls="macc-body-3" id="macc-head-3">
+              <span class="acc__n" aria-hidden="true">3</span>
+              <span class="acc__q">Announcements</span>
+              <span class="acc__chev" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-down"></use></svg></span>
+            </button>
+            <div class="acc__body" id="macc-body-3" role="region" aria-labelledby="macc-head-3"><div class="acc__inner">
+              <p>Announcements are the third layer &mdash; how you keep things moving once the semester is under way. We'll look at them properly in a moment, after a quick sort.</p>
+            </div></div>
+          </div>
+        </div>
+
+        <h2>Practical rules of thumb for structure</h2>
+        <ul>
+          <li><strong>Chunk content</strong> into manageable pieces rather than one long scroll. In Moodle, use topic sections and the course index; in Blackboard, use learning modules or folders.</li>
+          <li><strong>Prefer a web page to a stack of attachments</strong>, and link to a single file rather than uploading copies.</li>
+          <li>Use <strong>clear naming conventions</strong>, such as &ldquo;Week 3: Activity: Case analysis&rdquo; rather than &ldquo;Notes final2&rdquo;.</li>
+          <li>Use <strong>access restrictions and completion tracking</strong> to guide students through a sequence &mdash; called <em>restrict access</em> and <em>activity completion</em> in Moodle, and <em>release conditions</em> in Blackboard &mdash; but use them sparingly, because over-restriction frustrates adult learners who dip in and out.</li>
+          <li><strong>Hide or remove anything unused.</strong> If you roll a module over from last year, check dates, links and references to old assessments.</li>
+        </ul>
+
+        <div class="gate" data-gate></div>
+
+        <div class="match" data-match="page" data-feedback="Permanent information lives in Start Here. Time-sensitive messages go in announcements. Learning tasks sit in the weekly structure. Discussion belongs in forums.">
+          <div class="kc__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-layout"></use></svg> Try this sort &middot; Where does each item belong?</div>
+          <p style="color:var(--ink-soft)">Decide where each item belongs &mdash; drag it, or select it and then choose a box. Some could reasonably go in two places, so think about which is its <strong>primary home</strong>.</p>
+          <div class="match__grid">
+            <div>
+              <div class="match__col-title">Items</div>
+              <div class="tokens" id="pageTokens">
+                <div class="token" draggable="true" role="button" tabindex="0" data-token="p1" data-level="announce">Assessment deadline reminder</div>
+                <div class="token" draggable="true" role="button" tabindex="0" data-token="p2" data-level="start">Full assessment brief</div>
+                <div class="token" draggable="true" role="button" tabindex="0" data-token="p3" data-level="start">How to contact me and response times</div>
+                <div class="token" draggable="true" role="button" tabindex="0" data-token="p4" data-level="weekly">This week's reading and activity</div>
+                <div class="token" draggable="true" role="button" tabindex="0" data-token="p5" data-level="announce">Room change for tomorrow's live session</div>
+                <div class="token" draggable="true" role="button" tabindex="0" data-token="p6" data-level="forum">Class discussion on a case study</div>
+              </div>
+            </div>
+            <div>
+              <div class="match__col-title">Primary home</div>
+              <div class="drops">
+                <div class="drop" data-accept="start"><button class="drop__target" type="button" aria-label="Place the selected item in: Start Here">Start Here</button><span class="drop__slot"></span></div>
+                <div class="drop" data-accept="weekly"><button class="drop__target" type="button" aria-label="Place the selected item in: Weekly section">Weekly section</button><span class="drop__slot"></span></div>
+                <div class="drop" data-accept="announce"><button class="drop__target" type="button" aria-label="Place the selected item in: Announcement">Announcement</button><span class="drop__slot"></span></div>
+                <div class="drop" data-accept="forum"><button class="drop__target" type="button" aria-label="Place the selected item in: Forum">Forum</button><span class="drop__slot"></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="match__actions">
+            <button class="btn btn--primary btn--sm" data-check>Check my answers</button>
+            <button class="btn btn--ghost btn--sm" data-reset>Reset</button>
+            <span class="kc__score" data-matchscore role="status"></span>
+          </div>
+          <p class="match__note" data-matchnote role="status"></p>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <h2>Announcements</h2>
+        <p class="lead">They're your most powerful, most underused tool.</p>
+        <p>In Moodle, the Announcements forum tends to be one-way and typically sends an email to students. In Blackboard, announcements can also be emailed. Because they're pushed to students, use them well.</p>
+        <ul>
+          <li>Keep announcements <strong>short, specific and purposeful</strong>.</li>
+          <li>A weekly &ldquo;what's happening&rdquo; post builds rhythm and presence: what we covered, what's coming, and what to do.</li>
+          <li>Use announcements for <strong>time-sensitive information</strong>, not as a place for permanent content.</li>
+          <li>Post at a <strong>predictable time</strong>, so students know when to look.</li>
+        </ul>
+
+        <div class="callout callout--tip">
+          <div class="callout__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-bell"></use></svg></div>
+          <div class="callout__body">
+            <p><strong>Quick tip: a sample weekly announcement.</strong></p>
+            <blockquote class="sample">Week 4: This week we move from describing to evaluating. Read the two short articles and post your first response in the Week 4 forum by Thursday. Live session Friday at 10:00; the link is in Start Here. Reminder: Report 1 draft is due in two weeks. Aim to post questions in the Q&amp;A forum so everyone benefits.</blockquote>
+          </div>
+        </div>
+
+        <div class="download">
+          <div class="download__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clipboard"></use></svg></div>
+          <div class="download__body">
+            <strong>Module page audit checklist</strong>
+            <span>One page. A quick audit you can run on any module page in ten minutes.</span>
+          </div>
+          <a class="btn btn--primary btn--sm" href="assets/module-page-audit-checklist.html" download="module-page-audit-checklist.html" target="_blank" rel="noopener" data-download="audit"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-download"></use></svg> Download the checklist</a>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <div class="reflect" data-reflect="s2">
+          <div class="reflect__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pen"></use></svg> Your experience &middot; not scored</div>
+          <p class="reflect__prompt" id="reflect-s2">In your industry, how do teams communicate routine updates, such as project status, deadlines and changes? What works well, and what causes confusion? How could that inform your announcement routine?</p>
+          <textarea aria-labelledby="reflect-s2" placeholder="Jot your thoughts here &mdash; saved only on this device&hellip;"></textarea>
+          <div class="reflect__foot">
+            <span class="reflect__note">Just for your own thinking.</span>
+            <button class="reflect__save" type="button">Save note</button>
+          </div>
+        </div>
+
+        <div class="lesson-nav">
+          <button class="btn btn--ghost" data-prev><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg> <span class="long">Clear, accessible, engaging</span></button>
+          <button class="btn btn--primary" data-next><span class="long">Forums, live links &amp; communication</span> <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></button>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           SECTION 4 — FORUMS, LIVE LINKS AND COMMUNICATION  (data-lesson="3")
+      ================================================================== -->
+      <section class="lesson" data-lesson="3" data-accent="1">
+      <header class="hero">
+          <span class="hero__crest crest-grad" aria-hidden="true"></span>
+          <div class="hero__panel u-panel grad-mesh">
+            <span class="eyebrow" data-hero-eyebrow><span class="u-mark" aria-hidden="true"></span> Section 4 of 7</span>
+            <h1 tabindex="-1">Discussion forums, live links and communication</h1>
+            <p class="hero__meta">~5.5 min read</p>
+          </div>
+          <div class="hero__side" data-hero-side></div>
+        </header>
+
+        <div class="statement"><span class="u-watermark" aria-hidden="true"></span><span>The aim is to cut down on scattered emails and build a predictable pattern students can rely on.</span></div>
+
+        <h2>Start with forums</h2>
+        <p>Forums are the backbone of asynchronous interaction. <strong>Two or three well-designed forums beat ten unused ones.</strong> A typical set is a Q&amp;A forum for module questions, a discussion forum tied to learning tasks, and perhaps a social space.</p>
+        <p>In Moodle, there are several forum types: a <strong>standard forum</strong> for open discussion; a <strong>Q&amp;A forum</strong>, where students post their own response before seeing others', which prevents copying and encourages individual thinking; and others for single topics. Blackboard offers <strong>discussion boards</strong>, with options to organise by topic or group.</p>
+
+        <figure class="figure figure--framed fig-thread">
+          <svg viewBox="0 0 660 270" role="img" aria-label="An online discussion with threaded replies: a prompt from the lecturer, two student replies, and a nested reply to one of them">
+            <defs>
+              <style>
+                .th-card{fill:var(--bg);stroke:var(--line);stroke-width:1.4}
+                .th-lec{fill:var(--accent-tint);stroke:var(--accent);stroke-width:1.4}
+                .th-av{fill:var(--slate)}
+                .th-avt{fill:#fff;font:700 11px var(--font-head);text-anchor:middle}
+                .th-t{fill:var(--ink-strong);font:700 12px var(--font-head)}
+                .th-s{fill:var(--ink-soft);font:11.5px var(--font-body)}
+                .th-bar{fill:var(--line)}
+                .th-ln{stroke:var(--accent);stroke-width:1.5;fill:none}
+              </style>
+            </defs>
+            <rect class="th-lec" x="16" y="14" width="628" height="62" rx="10"/>
+            <circle class="th-av" cx="44" cy="40" r="14"/><text class="th-avt" x="44" y="44">L</text>
+            <text class="th-t" x="70" y="34">Lecturer &middot; prompt</text>
+            <text class="th-s" x="70" y="54">Evaluate two approaches to the problem in the case study, take a position, and respond to a peer.</text>
+
+            <path class="th-ln" d="M34 76 L34 118 M34 118 L52 118 M34 118 L34 196 L52 196"/>
+            <rect class="th-card" x="52" y="96" width="592" height="46" rx="9"/>
+            <circle class="th-av" cx="76" cy="119" r="12"/><text class="th-avt" x="76" y="123" style="font-size:10px">A</text>
+            <text class="th-t" x="98" y="114" style="font-size:11.5px">Student A</text>
+            <rect class="th-bar" x="98" y="122" width="360" height="6" rx="3"/><rect class="th-bar" x="98" y="132" width="230" height="6" rx="3"/>
+
+            <path class="th-ln" d="M78 142 L78 168 L96 168"/>
+            <rect class="th-card" x="96" y="150" width="548" height="40" rx="9"/>
+            <circle class="th-av" cx="118" cy="170" r="11"/><text class="th-avt" x="118" y="174" style="font-size:10px">B</text>
+            <text class="th-t" x="138" y="166" style="font-size:11.5px">Student B &middot; replies to A</text>
+            <rect class="th-bar" x="138" y="173" width="330" height="6" rx="3"/>
+
+            <rect class="th-card" x="52" y="200" width="592" height="46" rx="9"/>
+            <circle class="th-av" cx="76" cy="223" r="12"/><text class="th-avt" x="76" y="227" style="font-size:10px">C</text>
+            <text class="th-t" x="98" y="218" style="font-size:11.5px">Student C</text>
+            <rect class="th-bar" x="98" y="226" width="300" height="6" rx="3"/><rect class="th-bar" x="98" y="236" width="180" height="6" rx="3"/>
+            <text class="th-s" x="16" y="264" style="font-style:italic">A good prompt gets replies that build on each other, not a row of one-liners.</text>
+          </svg>
+          <figcaption>Threaded replies: the prompt asks for a position, and the replies respond to each other.</figcaption>
+        </figure>
+
+        <div class="gate" data-gate></div>
+
+        <div class="tabs" data-tabs="forums">
+          <div class="tabs__list" role="tablist" aria-label="Kinds of forum">
+            <button class="tabs__btn is-active" data-tab="qa" role="tab" id="forumstab-qa" aria-controls="forumspanel-qa" aria-selected="true" tabindex="0" type="button">Q&amp;A forum</button>
+            <button class="tabs__btn" data-tab="learning" role="tab" id="forumstab-learning" aria-controls="forumspanel-learning" aria-selected="false" tabindex="-1" type="button">Learning discussion</button>
+            <button class="tabs__btn" data-tab="social" role="tab" id="forumstab-social" aria-controls="forumspanel-social" aria-selected="false" tabindex="-1" type="button">Social</button>
+          </div>
+
+          <div class="tabs__panel is-active" data-panel="qa" role="tabpanel" id="forumspanel-qa" aria-labelledby="forumstab-qa" tabindex="0">
+            <span class="tabs__level">For module questions</span>
+            <h3>Answer common questions once, publicly</h3>
+            <p>A Q&amp;A forum answers common questions once, publicly. Encourage students to answer each other, and step in when needed. This reduces the email load and builds community.</p>
+          </div>
+
+          <div class="tabs__panel" data-panel="learning" role="tabpanel" id="forumspanel-learning" aria-labelledby="forumstab-learning" tabindex="0">
+            <span class="tabs__level">Tied to a learning task</span>
+            <h3>It needs a good prompt</h3>
+            <p>A prompt that asks &ldquo;What did you think of the reading?&rdquo; produces a handful of one-line replies. A prompt that asks students to <strong>apply, compare or evaluate</strong> produces real thinking. Pitch it to the level:</p>
+            <div class="deflist">
+              <div class="deflist__row"><div class="deflist__term">Level 7</div><div class="deflist__desc">Ask students to apply a concept to a defined scenario.</div></div>
+              <div class="deflist__row"><div class="deflist__term">Level 8</div><div class="deflist__desc">Ask them to evaluate competing approaches and justify a position using evidence, and to respond critically to a peer.</div></div>
+              <div class="deflist__row"><div class="deflist__term">Level 9</div><div class="deflist__desc">Invite students to lead: to critique a research paper, pose a question for the group, or synthesise the discussion for others.</div></div>
+            </div>
+          </div>
+
+          <div class="tabs__panel" data-panel="social" role="tabpanel" id="forumspanel-social" aria-labelledby="forumstab-social" tabindex="0">
+            <span class="tabs__level">Optional</span>
+            <h3>Somewhere to get to know each other</h3>
+            <p>A social space gives students somewhere to chat that isn't the Q&amp;A forum. It supports the social presence we met in Section 2, and keeps the Q&amp;A forum for questions.</p>
+          </div>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <h2>Set expectations</h2>
+        <ul>
+          <li>Say <strong>how many posts, by when</strong>, and what a good post looks like.</li>
+          <li>Agree simple <strong>netiquette</strong>.</li>
+          <li>Decide <strong>how you'll participate</strong>.</li>
+          <li>If the discussion is assessed, <strong>use a rubric and share it in advance</strong>.</li>
+        </ul>
+        <p>Salmon's five-stage model of e-moderating (2011) is helpful for deciding how you take part. Early on, you support access and community. Later, you step back as students build knowledge together.</p>
+        <ol class="process process--five" aria-label="Salmon's five stages of e-moderating, in order">
+          <li class="process__step"><span class="process__n">1</span><strong>Access and motivation</strong></li>
+          <li class="process__step"><span class="process__n">2</span><strong>Socialisation</strong></li>
+          <li class="process__step"><span class="process__n">3</span><strong>Information exchange</strong></li>
+          <li class="process__step"><span class="process__n">4</span><strong>Knowledge construction</strong></li>
+          <li class="process__step"><span class="process__n">5</span><strong>Development</strong></li>
+        </ol>
+
+        <div class="kc" data-kc="kc1" data-type="single">
+          <div class="kc__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg> Knowledge check</div>
+          <p class="kc__q" id="kcq-kc1">Which forum prompt is most appropriate for a Level 8 module?</p>
+          <div class="kc__options" role="group" aria-labelledby="kcq-kc1">
+            <button class="opt" data-opt="A"><span class="opt__mark"><span class="opt__letter">A</span></span> &ldquo;Share your thoughts on this week's reading.&rdquo;</button>
+            <button class="opt" data-opt="B"><span class="opt__mark"><span class="opt__letter">B</span></span> &ldquo;Summarise the three main points of the article.&rdquo;</button>
+            <button class="opt" data-opt="C" data-correct><span class="opt__mark"><span class="opt__letter">C</span></span> &ldquo;Evaluate two approaches to the problem in the case study, take a position, and respond to a colleague whose position differs from yours.&rdquo;</button>
+            <button class="opt" data-opt="D"><span class="opt__mark"><span class="opt__letter">D</span></span> &ldquo;Post a link to a related article.&rdquo;</button>
+          </div>
+          <div class="kc__feedback" role="status" aria-live="polite"
+               data-good="It asks for evaluation, justification and critical response, which are Level 8 skills."
+               data-bad="Look for the prompt that asks students to analyse, take a position and engage with others."></div>
+          <div class="kc__footer"><button class="kc__retry" type="button"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-rotate"></use></svg> Try again</button></div>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <h2>Live links</h2>
+        <p>Whether you use Teams, Zoom, Blackboard Collaborate or another tool, the principles are the same.</p>
+        <ul>
+          <li>Keep <strong>one persistent link</strong> in Start Here, rather than sending new links each week.</li>
+          <li><strong>Publish a schedule</strong> and say clearly whether attendance is required.</li>
+          <li><strong>Record sessions</strong> if policy allows, and <strong>caption</strong> them, so students who can't attend aren't left behind.</li>
+          <li>Share a <strong>short agenda</strong>.</li>
+          <li>Plan <strong>interaction</strong>: polls, breakout rooms and short tasks, not a long monologue.</li>
+        </ul>
+        <p>Time zones and work patterns matter. Offering an alternative to the live session, such as a recorded version plus a forum task, supports adult learners.</p>
+
+        <h2>Set your communication policy</h2>
+        <p>Put it in Start Here. Say <strong>where</strong> students should ask questions, <strong>how quickly</strong> you'll reply &mdash; for example within two working days &mdash; and <strong>what you'll use email for</strong>. Clarity here protects your time as much as it helps students.</p>
+
+        <div class="reflect" data-reflect="s3">
+          <div class="reflect__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pen"></use></svg> Your experience &middot; not scored</div>
+          <p class="reflect__prompt" id="reflect-s3">How do professionals in your field use chat, video calls or shared documents to collaborate? Which of those habits could you build into a forum or live session, and which should you avoid copying?</p>
+          <textarea aria-labelledby="reflect-s3" placeholder="Jot your thoughts here &mdash; saved only on this device&hellip;"></textarea>
+          <div class="reflect__foot">
+            <span class="reflect__note">Just for your own thinking.</span>
+            <button class="reflect__save" type="button">Save note</button>
+          </div>
+        </div>
+
+        <div class="lesson-nav">
+          <button class="btn btn--ghost" data-prev><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg> <span class="long">Page, announcements &amp; content</span></button>
+          <button class="btn btn--primary" data-next><span class="long">Interaction tools</span> <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></button>
+        </div>
+      </section>
+      <!-- =================================================================
+           SECTION 5 — LMS TOOLS FOR INTERACTION  (data-lesson="4")
+      ================================================================== -->
+      <section class="lesson" data-lesson="4" data-accent="2">
+      <header class="hero">
+          <span class="hero__crest crest-grad" aria-hidden="true"></span>
+          <div class="hero__panel u-panel grad-mesh">
+            <span class="eyebrow" data-hero-eyebrow><span class="u-mark" aria-hidden="true"></span> Section 5 of 7</span>
+            <h1 tabindex="-1">LMS tools for peer and lecturer&ndash;student interaction</h1>
+            <p class="hero__meta">~5 min read</p>
+          </div>
+          <div class="hero__side" data-hero-side></div>
+        </header>
+
+        <p class="lead">Moore (1989) described three types of interaction in distance education: <strong>learner&ndash;content</strong>, <strong>learner&ndash;learner</strong>, and <strong>learner&ndash;instructor</strong>. A strong module includes all three.</p>
+
+        <figure class="figure figure--framed fig-moore">
+          <svg viewBox="0 0 660 270" role="img" aria-label="Three arrows from the student: to the content, to other students, and to the lecturer">
+            <defs>
+              <style>
+                .mo-node{fill:var(--bg);stroke-width:2.5}
+                .mo-t{font:700 13px var(--font-head);fill:var(--ink-strong);text-anchor:middle}
+                .mo-s{font:11.5px var(--font-body);fill:var(--ink-soft);text-anchor:middle}
+                .mo-arr{stroke:var(--accent);stroke-width:2.2;fill:none}
+                .mo-lbl{font:700 10.5px var(--font-head);fill:var(--accent-ink);letter-spacing:.06em;text-anchor:middle}
+              </style>
+              <marker id="mo-head" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="var(--accent)"/></marker>
+            </defs>
+            <line class="mo-arr" x1="268" y1="126" x2="156" y2="82" marker-end="url(#mo-head)"/>
+            <line class="mo-arr" x1="392" y1="126" x2="504" y2="82" marker-end="url(#mo-head)"/>
+            <line class="mo-arr" x1="330" y1="170" x2="330" y2="214" marker-end="url(#mo-head)"/>
+            <text class="mo-lbl" x="196" y="128">LEARNER&ndash;CONTENT</text>
+            <text class="mo-lbl" x="466" y="128">LEARNER&ndash;LEARNER</text>
+            <text class="mo-lbl" x="330" y="194" style="text-anchor:start" dx="14">LEARNER&ndash;INSTRUCTOR</text>
+            <circle class="mo-node" cx="330" cy="148" r="38" stroke="var(--accent)"/>
+            <text class="mo-t" x="330" y="153">Student</text>
+            <circle class="mo-node" cx="116" cy="64" r="42" stroke="var(--slate)"/>
+            <text class="mo-t" x="116" y="62">Content</text><text class="mo-s" x="116" y="78">and activities</text>
+            <circle class="mo-node" cx="544" cy="64" r="42" stroke="var(--slate)"/>
+            <text class="mo-t" x="544" y="62">Other</text><text class="mo-s" x="544" y="78">students</text>
+            <circle class="mo-node" cx="330" cy="242" r="30" stroke="var(--accent-ink)" style="stroke-width:2.5"/>
+            <text class="mo-t" x="330" y="246">Lecturer</text>
+          </svg>
+          <figcaption>A strong module gives students something to do in all three directions.</figcaption>
+        </figure>
+
+        <p>Laurillard's conversational framework (2012) goes further: learning happens through an <strong>ongoing dialogue</strong>, in which students act, receive feedback, and adjust. So, choose tools that create that loop.</p>
+
+        <div class="gate" data-gate></div>
+
+        <h2>The tools for each type of interaction</h2>
+        <div class="tabs" data-tabs="interaction">
+          <div class="tabs__list" role="tablist" aria-label="Types of interaction">
+            <button class="tabs__btn is-active" data-tab="content" role="tab" id="inttab-content" aria-controls="intpanel-content" aria-selected="true" tabindex="0" type="button">Student&ndash;content</button>
+            <button class="tabs__btn" data-tab="student" role="tab" id="inttab-student" aria-controls="intpanel-student" aria-selected="false" tabindex="-1" type="button">Student&ndash;student</button>
+            <button class="tabs__btn" data-tab="lecturer" role="tab" id="inttab-lecturer" aria-controls="intpanel-lecturer" aria-selected="false" tabindex="-1" type="button">Student&ndash;lecturer</button>
+          </div>
+
+          <div class="tabs__panel is-active" data-panel="content" role="tabpanel" id="intpanel-content" aria-labelledby="inttab-content" tabindex="0">
+            <span class="tabs__level">Learner&ndash;content</span>
+            <h3>Prompt students to engage with the material actively</h3>
+            <ul>
+              <li>Interactive content</li>
+              <li>Short quizzes with immediate feedback</li>
+              <li>Embedded video with questions</li>
+            </ul>
+            <div class="compare">
+              <div class="compare__head"><span>Moodle</span><span>Blackboard</span></div>
+              <div class="compare__row"><div>Quizzes, lessons and H5P interactive content.</div><div>Tests and interactive options, depending on version.</div></div>
+            </div>
+            <div class="tabs__example"><span>Keep these</span>Low-stakes, and linked to outcomes.</div>
+          </div>
+
+          <div class="tabs__panel" data-panel="student" role="tabpanel" id="intpanel-student" aria-labelledby="inttab-student" tabindex="0">
+            <span class="tabs__level">Learner&ndash;learner</span>
+            <h3>Several options</h3>
+            <ul>
+              <li><strong>Forums</strong> for discussion.</li>
+              <li><strong>Groups</strong>, so students can work in smaller teams, with private group forums or spaces.</li>
+              <li><strong>Collaborative documents or wikis</strong> for co-creating content.</li>
+              <li><strong>Peer review.</strong> Students submit work, review each other's using a rubric, and receive feedback.</li>
+            </ul>
+            <div class="compare">
+              <div class="compare__head"><span>Moodle</span><span>Blackboard</span></div>
+              <div class="compare__row"><div>The Workshop activity.</div><div>Peer review options too, depending on your version.</div></div>
+            </div>
+            <p>Peer review builds <strong>evaluative judgement</strong>, and it works especially well when you give students the criteria and a model example. At Level 8, this might be peer review of a draft report; at Level 9, a research proposal.</p>
+          </div>
+
+          <div class="tabs__panel" data-panel="lecturer" role="tabpanel" id="intpanel-lecturer" aria-labelledby="inttab-lecturer" tabindex="0">
+            <span class="tabs__level">Learner&ndash;instructor</span>
+            <h3>Beyond announcements and forums</h3>
+            <ul>
+              <li>A short <strong>mid-module feedback survey</strong> to find out what's working.</li>
+              <li>The <strong>assignment tool</strong> for timely written, audio or video feedback tied to the rubric.</li>
+              <li><strong>Bookable office hours</strong> or a regular drop-in link.</li>
+              <li>The <strong>activity data</strong> your LMS provides, which can help you spot students who haven't logged in. That allows early, supportive outreach.</li>
+            </ul>
+            <div class="compare">
+              <div class="compare__head"><span>Moodle</span><span>Blackboard</span></div>
+              <div class="compare__row"><div>Completion and activity reports.</div><div>Course activity tools.</div></div>
+            </div>
+            <div class="tabs__example"><span>Be transparent</span>Tell students what data you view and why, and follow your institution's data protection policy.</div>
+          </div>
+        </div>
+
+        <div class="callout callout--why">
+          <div class="callout__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-message"></use></svg></div>
+          <div class="callout__body">
+            <p><strong>Feedback is a conversation.</strong> The National Forum's work on feedback and assessment (2017) stresses dialogue: feedback as a conversation rather than a one-way report. LMS tools make that conversation easier, but only if you plan for it.</p>
+          </div>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <h2>Build your interaction map</h2>
+        <p>Try it for a sample module. Pick one tool for each type of interaction, then compare with the suggested answer. <strong>There's no single right answer.</strong> The test is whether each choice supports a stated outcome.</p>
+
+        <div class="widget mapper" data-mapper="interaction">
+          <div class="kc__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-layout"></use></svg> Interaction map &middot; Level 8 Project Management</div>
+
+          <div class="mapper__case">
+            <span class="mapper__case-k">The module &middot; sample outcomes</span>
+            <ul>
+              <li>Evaluate competing project management methodologies for a given organisational context.</li>
+              <li>Produce, and justify, a risk register for a real project.</li>
+            </ul>
+          </div>
+
+          <div class="mapper__cols">
+            <div class="mapper__col">
+              <label class="mapper__label" for="map-content">Student&ndash;content</label>
+              <select id="map-content" data-col="content">
+                <option value="">Choose a tool&hellip;</option>
+                <option value="slides" data-verdict="weak" data-feedback="Slides on their own are passive. Nothing asks students to apply or judge anything, so they don't move towards either outcome.">Lecture slides uploaded as PDF attachments</option>
+                <option value="quiz" data-verdict="ok" data-feedback="Immediate feedback is useful, but short recall quizzes check terms, not evaluation. Fine as a low-stakes warm-up; not enough to carry the outcome.">A short quiz with immediate feedback after each topic</option>
+                <option value="video" data-verdict="good" data-feedback="Questions placed at key points of a worked case make students apply and judge while they watch, which is the thinking the first outcome needs.">An embedded video of a worked case, with questions at key points</option>
+                <option value="reading" data-verdict="weak" data-feedback="One long page of reading is a lot to take on at once and gives no feedback. It adds load without prompting any thinking.">A single long reading page for the whole module</option>
+              </select>
+              <p class="mapper__fb" data-fb="content" role="status"></p>
+            </div>
+            <div class="mapper__col">
+              <label class="mapper__label" for="map-student">Student&ndash;student</label>
+              <select id="map-student" data-col="student">
+                <option value="">Choose a tool&hellip;</option>
+                <option value="chat" data-verdict="weak" data-feedback="An open chat space has no task and no criteria, so it tends to drift. It doesn't connect to either outcome.">An open &ldquo;chat&rdquo; forum with no set task</option>
+                <option value="peer" data-verdict="good" data-feedback="Reviewing a peer's draft risk register against the rubric builds evaluative judgement, and directly supports the second outcome. It works best with the criteria and a model example.">Peer review of a draft risk register, using the rubric</option>
+                <option value="forum" data-verdict="good" data-feedback="A Level 8 prompt, which asks for a position and a critical reply to a peer, practises exactly the evaluation the first outcome calls for.">A forum task: evaluate two methodologies for a case and respond to a peer</option>
+                <option value="email" data-verdict="weak" data-feedback="Private email between students can't be seen, guided or built on, and gives you nothing to look at. It doesn't create a shared learning loop.">Students email each other with questions</option>
+              </select>
+              <p class="mapper__fb" data-fb="student" role="status"></p>
+            </div>
+            <div class="mapper__col">
+              <label class="mapper__label" for="map-lecturer">Student&ndash;lecturer</label>
+              <select id="map-lecturer" data-col="lecturer">
+                <option value="">Choose a tool&hellip;</option>
+                <option value="announce" data-verdict="weak" data-feedback="Announcements are one-way. They keep students informed but give no way for students to act, get feedback and adjust, so there's no loop.">Announcements only</option>
+                <option value="feedback" data-verdict="good" data-feedback="Timely feedback tied to the rubric lets students act on it before the next task. That is the loop Laurillard describes, and it supports both outcomes.">Rubric-based feedback through the assignment tool, with an audio comment</option>
+                <option value="survey" data-verdict="ok" data-feedback="A mid-module survey shows you what's working, and a drop-in gives students a way to ask. Useful, but it doesn't by itself give feedback on their work against the outcomes.">A mid-module feedback survey and a bookable drop-in</option>
+                <option value="data" data-verdict="ok" data-feedback="Activity reports help you reach out early to students who haven't logged in, which is valuable. Tell students what you look at and why, and it still needs a route for feedback on their work.">Checking the activity reports, and contacting students who haven't logged in</option>
+              </select>
+              <p class="mapper__fb" data-fb="lecturer" role="status"></p>
+            </div>
+          </div>
+
+          <button class="btn btn--primary btn--sm" type="button" data-compare disabled>Compare with the suggested answer</button>
+
+          <div class="mapper__model" data-model hidden>
+            <h3 class="mapper__model-h">One defensible answer</h3>
+            <div class="mapper__model-row"><strong>Student&ndash;content</strong><span>An embedded video of a worked case, with questions at key points. It makes students apply and judge as they watch, and ties straight to the first outcome.</span></div>
+            <div class="mapper__model-row"><strong>Student&ndash;student</strong><span>Peer review of a draft risk register, using the rubric. It builds evaluative judgement and supports the second outcome. The forum task is just as defensible for the first.</span></div>
+            <div class="mapper__model-row"><strong>Student&ndash;lecturer</strong><span>Rubric-based feedback through the assignment tool. It closes the loop: students act, receive feedback, and adjust.</span></div>
+            <p class="mapper__model-p">Your picks may differ and still be right. Ask of each one: <em>what should students do, and does this tool support it?</em></p>
+          </div>
+        </div>
+
+        <div class="reflect" data-reflect="s4">
+          <div class="reflect__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pen"></use></svg> Your own module &middot; not scored</div>
+          <p class="reflect__prompt" id="reflect-s4">Which of the three interaction types is weakest in your module right now? What's one simple tool or routine you could add this semester?</p>
+          <textarea aria-labelledby="reflect-s4" placeholder="Jot your thoughts here &mdash; saved only on this device&hellip;"></textarea>
+          <div class="reflect__foot">
+            <span class="reflect__note">Just for your own thinking.</span>
+            <button class="reflect__save" type="button">Save note</button>
+          </div>
+        </div>
+
+        <div class="lesson-nav">
+          <button class="btn btn--ghost" data-prev><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg> <span class="long">Forums, live links &amp; communication</span></button>
+          <button class="btn btn--primary" data-next><span class="long">Turnitin for assessment</span> <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></button>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           SECTION 6 — USING TURNITIN LINKS FOR ASSESSMENTS  (data-lesson="5")
+      ================================================================== -->
+      <section class="lesson" data-lesson="5" data-accent="3">
+      <header class="hero">
+          <span class="hero__crest crest-grad" aria-hidden="true"></span>
+          <div class="hero__panel u-panel grad-mesh">
+            <span class="eyebrow" data-hero-eyebrow><span class="u-mark" aria-hidden="true"></span> Section 6 of 7</span>
+            <h1 tabindex="-1">Using Turnitin links for assessments</h1>
+            <p class="hero__meta">~4.5 min read</p>
+          </div>
+          <div class="hero__side" data-hero-side></div>
+        </header>
+
+        <p class="lead">Finally, assessment submission. Turnitin is widely used for <strong>submitting written work</strong>, <strong>checking similarity</strong> to other sources, and <strong>marking and giving feedback</strong>.</p>
+        <p>Depending on your institution, it appears in Moodle and Blackboard as an integrated assignment or a link. Check your local guidance, as set-ups vary.</p>
+
+        <div class="callout callout--why">
+          <div class="callout__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-search"></use></svg></div>
+          <div class="callout__body">
+            <p><strong>First, a mindset point: the similarity report is not a plagiarism verdict.</strong> It shows where text matches other sources. Matches in a reference list, quotations or common phrases are normal. A human has to interpret the report. Used well, it's a learning tool: it helps students understand citation and paraphrasing, and gives you a starting point for conversation.</p>
+          </div>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <h2>Set up Turnitin well</h2>
+
+        <figure class="figure figure--framed fig-submit">
+          <div class="submock" role="group" aria-label="Example of a clearly set-up submission page">
+            <div class="submock__bar"><span>Assessment</span></div>
+            <div class="submock__body">
+              <h3 class="submock__title">Report 1: Draft (formative)</h3>
+              <dl class="submock__meta">
+                <div><dt>Due</dt><dd>Friday, 17:00</dd></div>
+                <div><dt>What to submit</dt><dd>A 1,500-word report, as a .docx or .pdf file</dd></div>
+                <div><dt>Referencing</dt><dd>As set out in the brief</dd></div>
+                <div><dt>Resubmission</dt><dd>Allowed until the deadline, so you can see your similarity report and improve</dd></div>
+              </dl>
+              <div class="submock__links"><span>Read the full brief</span><span>Read the rubric</span></div>
+              <span class="submock__btn">Submit</span>
+            </div>
+          </div>
+          <figcaption>A clear label, instructions that match the brief, and settings the student can understand. Generic mock-up.</figcaption>
+        </figure>
+
+        <div class="accordion" data-accordion="turnitin">
+          <div class="acc">
+            <button class="acc__head" type="button" aria-expanded="false" aria-controls="tacc-body-1" id="tacc-head-1">
+              <span class="acc__n" aria-hidden="true">1</span>
+              <span class="acc__q">One link per assessment, with clear labels</span>
+              <span class="acc__chev" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-down"></use></svg></span>
+            </button>
+            <div class="acc__body" id="tacc-body-1" role="region" aria-labelledby="tacc-head-1"><div class="acc__inner">
+              <p>Label it &ldquo;Report 1: Draft (formative)&rdquo; or &ldquo;Report 1: Final (summative)&rdquo;, not just &ldquo;Assignment 1&rdquo;. Students shouldn't have to guess.</p>
+            </div></div>
+          </div>
+          <div class="acc">
+            <button class="acc__head" type="button" aria-expanded="false" aria-controls="tacc-body-2" id="tacc-head-2">
+              <span class="acc__n" aria-hidden="true">2</span>
+              <span class="acc__q">Instructions that match the brief</span>
+              <span class="acc__chev" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-down"></use></svg></span>
+            </button>
+            <div class="acc__body" id="tacc-body-2" role="region" aria-labelledby="tacc-head-2"><div class="acc__inner">
+              <p>Put a short summary of the brief, word count, file types, referencing style and the deadline on the submission page. Link to the full brief and the rubric.</p>
+            </div></div>
+          </div>
+          <div class="acc">
+            <button class="acc__head" type="button" aria-expanded="false" aria-controls="tacc-body-3" id="tacc-head-3">
+              <span class="acc__n" aria-hidden="true">3</span>
+              <span class="acc__q">Choose settings deliberately</span>
+              <span class="acc__chev" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-down"></use></svg></span>
+            </button>
+            <div class="acc__body" id="tacc-body-3" role="region" aria-labelledby="tacc-head-3"><div class="acc__inner">
+              <p>Decide on the due date, whether late submission is allowed, and how many submissions are permitted.</p>
+              <ul>
+                <li><strong>For drafts,</strong> allow resubmission before the deadline so students can see their similarity report and improve their citation. It's a powerful formative opportunity.</li>
+                <li><strong>For final submission,</strong> you'd normally restrict resubmission.</li>
+              </ul>
+              <p>Decide whether to exclude the bibliography or quoted material from the report, and be consistent.</p>
+            </div></div>
+          </div>
+          <div class="acc">
+            <button class="acc__head" type="button" aria-expanded="false" aria-controls="tacc-body-4" id="tacc-head-4">
+              <span class="acc__n" aria-hidden="true">4</span>
+              <span class="acc__q">Use the marking tools</span>
+              <span class="acc__chev" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-down"></use></svg></span>
+            </button>
+            <div class="acc__body" id="tacc-body-4" role="region" aria-labelledby="tacc-head-4"><div class="acc__inner">
+              <p>Use a rubric attached to the assignment, reusable comments, and where available audio comments. Return grades and feedback on the date you promised.</p>
+            </div></div>
+          </div>
+          <div class="acc">
+            <button class="acc__head" type="button" aria-expanded="false" aria-controls="tacc-body-5" id="tacc-head-5">
+              <span class="acc__n" aria-hidden="true">5</span>
+              <span class="acc__q">Test it as a student</span>
+              <span class="acc__chev" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-down"></use></svg></span>
+            </button>
+            <div class="acc__body" id="tacc-body-5" role="region" aria-labelledby="tacc-head-5"><div class="acc__inner">
+              <p>Before the deadline, check the link works, the dates display properly and your instructions make sense. And have a plan for students with difficulty submitting, such as an alternative route to a lecturer or administrator.</p>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <h2>Here's how it might look across levels</h2>
+        <div class="tabs" data-tabs="turnitin">
+          <div class="tabs__list" role="tablist" aria-label="Turnitin use at NFQ levels">
+            <button class="tabs__btn" data-tab="7" role="tab" id="tiitab-7" aria-controls="tiipanel-7" aria-selected="false" tabindex="-1" type="button">Level 7</button>
+            <button class="tabs__btn is-active" data-tab="8" role="tab" id="tiitab-8" aria-controls="tiipanel-8" aria-selected="true" tabindex="0" type="button">Level 8</button>
+            <button class="tabs__btn" data-tab="9" role="tab" id="tiitab-9" aria-controls="tiipanel-9" aria-selected="false" tabindex="-1" type="button">Level 9</button>
+          </div>
+          <div class="tabs__panel" data-panel="7" role="tabpanel" id="tiipanel-7" aria-labelledby="tiitab-7" tabindex="0">
+            <span class="tabs__level">Ordinary Bachelor Degree</span>
+            <h3>Teach referencing and paraphrasing</h3>
+            <p>A draft submission of a short applied report, with the similarity report used to teach referencing and paraphrasing, then a final submission graded against a structured rubric.</p>
+          </div>
+          <div class="tabs__panel is-active" data-panel="8" role="tabpanel" id="tiipanel-8" aria-labelledby="tiitab-8" tabindex="0">
+            <span class="tabs__level">Honours Bachelor Degree</span>
+            <h3>Peer feedback, then a weighted final</h3>
+            <p>A draft literature review or proposal submitted with peer feedback, followed by a weighted final report. Students interpret their own similarity report in a short reflection, which develops academic integrity as a professional skill.</p>
+          </div>
+          <div class="tabs__panel" data-panel="9" role="tabpanel" id="tiipanel-9" aria-labelledby="tiitab-9" tabindex="0">
+            <span class="tabs__level">Master's Degree</span>
+            <h3>A dialogue about source use</h3>
+            <p>Larger documents such as thesis chapters or research proposals, submitted for supervisor feedback. The report supports a dialogue about source use and synthesis, rather than acting as a checkpoint.</p>
+          </div>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <h2>Match the tool to the task</h2>
+        <p>Turnitin suits written submissions. If you've designed an authentic assessment, such as a portfolio, a presentation or a practical, use the assignment tool or another submission format that fits the work, rather than forcing it into a text-matching tool.</p>
+
+        <div class="callout callout--why">
+          <div class="callout__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-warning"></use></svg></div>
+          <div class="callout__body">
+            <p><strong>Generative AI is a related concern.</strong> Turnitin and some other tools offer AI-writing indicators, but these are unreliable and can produce false positives. SETU has turned off the AI detection tool in Turnitin because it was deemed to be so unreliable. Ireland's National Academic Integrity Network and QQI guidelines (2023) emphasise transparency and assessment design over detection alone.</p>
+          </div>
+        </div>
+
+        <div class="kc kc--multi" data-kc="kc2" data-type="multi">
+          <div class="kc__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg> Knowledge check &middot; select all that apply</div>
+          <p class="kc__q" id="kcq-kc2">Which of these are good practice when setting up a Turnitin assignment?</p>
+          <div class="kc__options" role="group" aria-labelledby="kcq-kc2">
+            <button class="opt" type="button" role="checkbox" aria-checked="false" data-opt="A" data-correct><span class="opt__mark"><span class="opt__letter">A</span></span><span class="opt__text">Labelling the link as formative draft or summative final</span></button>
+            <button class="opt" type="button" role="checkbox" aria-checked="false" data-opt="B"><span class="opt__mark"><span class="opt__letter">B</span></span><span class="opt__text">Treating a high similarity score as proof of plagiarism</span></button>
+            <button class="opt" type="button" role="checkbox" aria-checked="false" data-opt="C" data-correct><span class="opt__mark"><span class="opt__letter">C</span></span><span class="opt__text">Allowing draft resubmission so students can learn from their report</span></button>
+            <button class="opt" type="button" role="checkbox" aria-checked="false" data-opt="D" data-correct><span class="opt__mark"><span class="opt__letter">D</span></span><span class="opt__text">Testing the link from a student's view before the deadline</span></button>
+            <button class="opt" type="button" role="checkbox" aria-checked="false" data-opt="E"><span class="opt__mark"><span class="opt__letter">E</span></span><span class="opt__text">Using Turnitin for every assessment type, including portfolios and presentations</span></button>
+          </div>
+          <div class="kc__footer">
+            <button class="btn btn--primary btn--sm kc__check" type="button" disabled>Check my answers</button>
+            <button class="kc__retry" type="button"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-rotate"></use></svg> Try again</button>
+          </div>
+          <div class="kc__feedback" role="status" aria-live="polite"
+               data-good="Clear labelling, draft resubmission and testing all support students. A similarity score needs human interpretation, and not every assessment should go through a text-matching tool."
+               data-bad="Clear labelling, draft resubmission and testing all support students. A similarity score needs human interpretation, and not every assessment should go through a text-matching tool."></div>
+        </div>
+
+        <div class="reflect" data-reflect="s5">
+          <div class="reflect__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pen"></use></svg> Your experience &middot; optional</div>
+          <p class="reflect__prompt" id="reflect-s5">In your industry, how is original work and source use handled, such as citing standards, reusing templates or attributing others' work? How could that shape what you teach about integrity?</p>
+          <textarea aria-labelledby="reflect-s5" placeholder="Jot your thoughts here &mdash; saved only on this device&hellip;"></textarea>
+          <div class="reflect__foot">
+            <span class="reflect__note">Optional &mdash; just for your own thinking.</span>
+            <button class="reflect__save" type="button">Save note</button>
+          </div>
+        </div>
+
+        <div class="lesson-nav">
+          <button class="btn btn--ghost" data-prev><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg> <span class="long">Interaction tools</span></button>
+          <button class="btn btn--primary" data-next><span class="long">Summary</span> <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></button>
+        </div>
+      </section>
+      <!-- =================================================================
+           SECTION 7 — SUMMARY AND FINAL REFLECTION  (data-lesson="6")
+      ================================================================== -->
+      <section class="lesson" data-lesson="6" data-accent="1">
+      <header class="hero">
+          <span class="hero__crest crest-grad" aria-hidden="true"></span>
+          <div class="hero__panel u-panel grad-mesh">
+            <span class="eyebrow" data-hero-eyebrow><span class="u-mark" aria-hidden="true"></span> Section 7 of 7</span>
+            <h1 tabindex="-1">Summary and final reflection</h1>
+            <p class="hero__meta">~2 min read</p>
+          </div>
+          <div class="hero__side" data-hero-side></div>
+        </header>
+
+        <div class="statement"><span class="u-watermark" aria-hidden="true"></span><span>Let's pull it together.</span></div>
+
+        <div class="deflist">
+          <div class="deflist__row"><div class="deflist__term">A clear, accessible, engaging space</div><div class="deflist__desc">Design from the student's view. Reduce cognitive load, follow accessibility basics, and build teaching, social and cognitive presence.</div></div>
+          <div class="deflist__row"><div class="deflist__term">Module page and announcements</div><div class="deflist__desc">Start Here, a consistent structure, clear names, and short, purposeful announcements.</div></div>
+          <div class="deflist__row"><div class="deflist__term">Forums, live links and communication</div><div class="deflist__desc">A few well-designed forums, prompts pitched to the level, one persistent live link, and a clear communication policy.</div></div>
+          <div class="deflist__row"><div class="deflist__term">Peer and lecturer&ndash;student interaction</div><div class="deflist__desc">Plan for all three types of interaction and choose tools that serve your outcomes.</div></div>
+          <div class="deflist__row"><div class="deflist__term">Turnitin</div><div class="deflist__desc">One clearly labelled link per assessment, deliberate settings, drafts for learning, and human judgement on the report.</div></div>
+        </div>
+
+        <div class="gate" data-gate></div>
+
+        <h2>References and resources</h2>
+        <ol class="refcite">
+          <li>Bates, A.W. (2019) <em>Teaching in a Digital Age.</em> 2nd edn. Tony Bates Associates (open textbook).</li>
+          <li>Biggs, J. and Tang, C. (2011) <em>Teaching for Quality Learning at University.</em> 4th edn. Open University Press.</li>
+          <li>CAST (2018) <em>Universal Design for Learning Guidelines</em> version 2.2.</li>
+          <li>Garrison, D.R., Anderson, T. and Archer, W. (2000) &lsquo;Critical inquiry in a text-based environment: computer conferencing in higher education&rsquo;, <em>The Internet and Higher Education</em>, 2(2&ndash;3).</li>
+          <li>Laurillard, D. (2012) <em>Teaching as a Design Science.</em> Routledge.</li>
+          <li>Mayer, R.E. (2009) <em>Multimedia Learning.</em> 2nd edn. Cambridge University Press.</li>
+          <li>Moore, M.G. (1989) &lsquo;Editorial: Three types of interaction&rsquo;, <em>American Journal of Distance Education</em>, 3(2).</li>
+          <li>National Academic Integrity Network / QQI (2023) <em>Generative Artificial Intelligence: Guidelines for Educators.</em></li>
+          <li>National Forum for the Enhancement of Teaching and Learning in Higher Education (2015) <em>Teaching and Learning in Irish Higher Education: A Roadmap for Enhancement in a Digital World 2015&ndash;2017.</em></li>
+          <li>National Forum for the Enhancement of Teaching and Learning in Higher Education (2017) <em>Expanding Our Understanding of Assessment and Feedback in Irish Higher Education</em>, and digital teaching and learning resources (<a href="https://teachingandlearning.ie" rel="noopener noreferrer" target="_blank">teachingandlearning.ie</a>).</li>
+          <li>Salmon, G. (2011) <em>E-moderating: The Key to Teaching and Learning Online.</em> 3rd edn. Routledge.</li>
+          <li>Sweller, J. (1988) &lsquo;Cognitive load during problem solving: effects on learning&rsquo;, <em>Cognitive Science</em>, 12(2).</li>
+          <li>W3C, <em>Web Content Accessibility Guidelines (WCAG) 2.2</em>; and EU Directive 2016/2102 on the accessibility of websites and mobile applications of public sector bodies.</li>
+          <li>Weller, M. (2007) <em>Virtual Learning Environments: Using, Choosing and Developing your VLE.</em> Routledge.</li>
+        </ol>
+
+        <h3>Product documentation</h3>
+        <ul class="reflist">
+          <li>Moodle Docs &mdash; <a href="https://docs.moodle.org" rel="noopener noreferrer" target="_blank">docs.moodle.org</a></li>
+          <li>Blackboard Help &mdash; <a href="https://help.blackboard.com" rel="noopener noreferrer" target="_blank">help.blackboard.com</a></li>
+          <li>Turnitin Help &mdash; <a href="https://help.turnitin.com" rel="noopener noreferrer" target="_blank">help.turnitin.com</a></li>
+          <li>Your institution's LMS and Turnitin guides.</li>
+        </ul>
+        <p class="placeholder-note">[Confirm that every link and document version is current before publishing, and add your institution's own LMS and Turnitin guides.]</p>
+
+        <div class="gate" data-gate></div>
+
+        <h2>Your module action plan</h2>
+        <p class="lead">To finish, a short action plan. Choose <strong>one module you teach or will build</strong>, and answer three questions.</p>
+
+        <div class="reflect" data-reflect="fix">
+          <div class="reflect__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pen"></use></svg> Module action plan &middot; Fix &middot; not submitted</div>
+          <p class="reflect__prompt" id="reflect-fix"><strong>Fix:</strong> What is the first thing a student sees on your module page, and what's the one change that would make it clearer?</p>
+          <textarea aria-labelledby="reflect-fix" placeholder="Name the module, and the one change&hellip; saved only on this device." style="min-height:100px"></textarea>
+          <div class="reflect__foot">
+            <span class="reflect__note">For your own planning.</span>
+            <button class="reflect__save" type="button">Save note</button>
+          </div>
+        </div>
+
+        <div class="reflect" data-reflect="add">
+          <div class="reflect__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pen"></use></svg> Module action plan &middot; Add &middot; not submitted</div>
+          <p class="reflect__prompt" id="reflect-add"><strong>Add:</strong> Which single routine or tool, such as a weekly announcement, a Q&amp;A forum, or a peer review task, would most improve interaction?</p>
+          <textarea aria-labelledby="reflect-add" placeholder="One routine or tool, and why&hellip;" style="min-height:100px"></textarea>
+          <div class="reflect__foot">
+            <span class="reflect__note">For your own planning.</span>
+            <button class="reflect__save" type="button">Save note</button>
+          </div>
+        </div>
+
+        <div class="reflect" data-reflect="draw">
+          <div class="reflect__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pen"></use></svg> Module action plan &middot; Draw on &middot; not submitted</div>
+          <p class="reflect__prompt" id="reflect-draw"><strong>Draw on:</strong> What experience from your industry or profession will you build into how students communicate or collaborate?</p>
+          <textarea aria-labelledby="reflect-draw" placeholder="A habit, a tool, a way of working&hellip;" style="min-height:100px"></textarea>
+          <div class="reflect__foot">
+            <span class="reflect__note">For your own planning.</span>
+            <button class="reflect__save" type="button">Save note</button>
+          </div>
+        </div>
+
+        <p>Save your plan, or download it to share with a colleague, your programme team or your learning technologist.</p>
+
+        <div class="gate" data-gate></div>
+        <!-- Progress dashboard -->
+        <div class="widget dashboard" data-dashboard>
+          <div class="kc__tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chart"></use></svg> Your progress summary</div>
+          <div class="dashboard__tiles">
+            <div class="dash-tile"><div class="dash-num" id="dashSections">0/7</div><div class="dash-lbl">Sections viewed</div></div>
+            <div class="dash-tile"><div class="dash-num" id="dashReflections">0/8</div><div class="dash-lbl">Reflections written</div></div>
+            <div class="dash-tile"><div class="dash-num" id="dashActs">0/8</div><div class="dash-lbl">Activities explored</div></div>
+          </div>
+          <div class="dashboard__status" id="dashStatus" role="status"></div>
+          <div class="dashboard__actions">
+            <button class="btn btn--sm" id="exportNotes" type="button"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-download"></use></svg> Download action plan</button>
+          </div>
+        </div>
+
+        <!-- Completion -->
+        <div class="complete">
+          <span class="u-watermark" aria-hidden="true"></span>
+          <div class="complete__badge" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cap"></use></svg></div>
+          <h2>Thank you for taking part.</h2>
+          <p>Small, deliberate changes make the biggest difference. I hope your next module build is a clear, welcoming and well-organised space.</p>
+          <div style="margin-top:20px">
+            <button class="btn btn--primary" id="finishBtn" type="button"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg> Complete unit</button>
+          </div>
+        </div>
+
+        <div class="lesson-nav">
+          <button class="btn btn--ghost" data-prev><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg> <span class="long">Turnitin for assessment</span></button>
+          <button class="btn" id="restartBtn" type="button"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-rotate"></use></svg> Back to start</button>
+        </div>
+      </section>
+
+    </main><!-- /content-scroll -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<script src="js/course.config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/scorm.js"></script>
+<script src="js/analytics.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/confetti.js"></script>
+<script src="js/interactions.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/rise.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module page audit checklist — Building Your Module</title>
+<style>
+  @font-face { font-family: "DM Sans"; src: url("fonts/dmsans-var.woff2") format("woff2"); font-weight: 100 1000; font-display: swap; }
+  @font-face { font-family: "Inter"; src: url("fonts/inter-var.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+  :root { --slate:#435465; --ink:#26323d; --soft:#52606d; --line:#cfd6dd; --accent:#5f5aa8; --tint:#ecebf6; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fff; color: var(--ink); font: 14px/1.4 "Inter", system-ui, sans-serif; }
+  .page { max-width: 900px; margin: 0 auto; padding: 28px 28px 36px; }
+  header { border-bottom: 3px solid var(--slate); padding-bottom: 12px; margin-bottom: 14px; }
+  .kicker { font: 700 11px "DM Sans", sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+  h1 { font: 700 24px/1.15 "DM Sans", sans-serif; margin: 4px 0 4px; color: var(--slate); }
+  .sub { margin: 0; color: var(--soft); }
+  .fields { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 12px 0 4px; font-size: 13px; color: var(--soft); }
+  .fields span { border-bottom: 1px solid var(--line); min-width: 210px; padding-bottom: 2px; }
+  .cols { columns: 2; column-gap: 32px; }
+  section { break-inside: avoid; margin: 0 0 12px; }
+  h2 { font: 700 13px "DM Sans", sans-serif; letter-spacing: .03em; text-transform: uppercase; color: #fff; background: var(--slate);
+       margin: 0 0 6px; padding: 4px 9px; border-radius: 4px; }
+  label { display: flex; gap: 8px; align-items: flex-start; padding: 2.5px 2px; font-size: 13px; cursor: pointer; }
+  input[type="checkbox"] { flex: none; width: 15px; height: 15px; margin: 2px 0 0; accent-color: var(--accent); }
+  footer { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--soft); }
+  .actions { margin: 0 0 14px; }
+  button { font: 600 13px "DM Sans", sans-serif; padding: 8px 14px; border-radius: 8px; border: 0; background: var(--accent); color: #fff; cursor: pointer; }
+  button:focus-visible, input:focus-visible { outline: 3px solid var(--slate); outline-offset: 2px; }
+  @media (max-width: 640px) { .cols { columns: 1; } .page { padding: 18px 16px 28px; } }
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    .page { padding: 0; max-width: none; } .actions { display: none; }
+    body { font-size: 10pt; } label { font-size: 9.5pt; padding: 1.5px 2px; } h1 { font-size: 19pt; } h2 { font-size: 9.5pt; padding: 3px 8px; }
+    .kicker, h2 { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    section { margin-bottom: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="kicker">SETU CPD &middot; Building Your Module</div>
+    <h1>Module page audit checklist</h1>
+    <p class="sub">A quick audit you can run on any module page in ten minutes. Open your module as a student would, then tick what you find.</p>
+    <div class="fields"><span>Module:</span><span>Date:</span><span>Checked by:</span></div>
+  </header>
+
+  <p class="actions"><button type="button" onclick="window.print()">Print or save as PDF</button></p>
+
+  <div class="cols">
+    <section>
+      <h2>Start Here</h2>
+      <label><input type="checkbox"> A short welcome, ideally with a brief video or audio message</label>
+      <label><input type="checkbox"> The learning outcomes</label>
+      <label><input type="checkbox"> An at-a-glance assessment schedule, with dates and weightings</label>
+      <label><input type="checkbox"> How and when to contact me</label>
+      <label><input type="checkbox"> Where to ask questions</label>
+      <label><input type="checkbox"> Links to key supports: library, academic writing, disability services</label>
+    </section>
+
+    <section>
+      <h2>Structure and content</h2>
+      <label><input type="checkbox"> One logical pattern (weekly, topic or assessment-led), used consistently</label>
+      <label><input type="checkbox"> The same internal pattern in every section: overview, what to do, resources, activity, what's next</label>
+      <label><input type="checkbox"> Content chunked into manageable pieces, not one long scroll</label>
+      <label><input type="checkbox"> Web pages rather than stacks of attachments; one link to a single file, not copies</label>
+      <label><input type="checkbox"> Clear names, such as &ldquo;Week 3: Activity: Case analysis&rdquo;, not &ldquo;Notes final2&rdquo;</label>
+      <label><input type="checkbox"> Access restrictions and completion tracking used sparingly</label>
+      <label><input type="checkbox"> Anything unused is hidden or removed</label>
+      <label><input type="checkbox"> Rolled over from last year? Dates, links and references to old assessments checked</label>
+    </section>
+
+    <section>
+      <h2>Announcements</h2>
+      <label><input type="checkbox"> Short, specific and purposeful</label>
+      <label><input type="checkbox"> A weekly &ldquo;what's happening&rdquo; post, at a predictable time</label>
+      <label><input type="checkbox"> Time-sensitive information only; nothing permanent</label>
+    </section>
+
+    <section>
+      <h2>Forums, live sessions and communication</h2>
+      <label><input type="checkbox"> Two or three well-designed forums, not ten unused ones</label>
+      <label><input type="checkbox"> Discussion prompts pitched to the level: apply, evaluate or lead</label>
+      <label><input type="checkbox"> Expectations stated: how many posts, by when, and what a good post looks like</label>
+      <label><input type="checkbox"> One persistent live link in Start Here, with a schedule and whether attendance is required</label>
+      <label><input type="checkbox"> Recordings captioned, if policy allows recording</label>
+      <label><input type="checkbox"> A communication policy in Start Here: where to ask, how fast I'll reply, what email is for</label>
+    </section>
+
+    <section>
+      <h2>Accessibility</h2>
+      <label><input type="checkbox"> Real headings, not bold text</label>
+      <label><input type="checkbox"> Meaningful link text, never &ldquo;click here&rdquo;</label>
+      <label><input type="checkbox"> Alt text on images that carry meaning</label>
+      <label><input type="checkbox"> Video and audio captioned and transcribed</label>
+      <label><input type="checkbox"> Colour contrast checked</label>
+      <label><input type="checkbox"> Web pages or accessible documents, not scanned PDFs</label>
+      <label><input type="checkbox"> Accessibility checker run, such as Ally</label>
+    </section>
+
+    <section>
+      <h2>Assessment submission</h2>
+      <label><input type="checkbox"> One clearly labelled Turnitin link per assessment, marked draft (formative) or final (summative)</label>
+      <label><input type="checkbox"> Instructions match the brief, with links to the full brief and the rubric</label>
+      <label><input type="checkbox"> Settings chosen deliberately: due date, late submission, resubmission, exclusions</label>
+      <label><input type="checkbox"> A rubric attached to the assignment</label>
+      <label><input type="checkbox"> Tested from a student's view before the deadline</label>
+    </section>
+  </div>
+
+  <footer>From <em>Building Your Module</em>, SETU CPD. The menu names differ between Moodle, Blackboard and other systems; the principles apply to any LMS.</footer>
+</div>
+</body>
+</html>
